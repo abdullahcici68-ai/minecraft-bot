@@ -19,12 +19,23 @@ function baslat() {
 
   bot.on('spawn', function() {
     console.log('BAĞLANDI!')
+
     hareketInterval = setInterval(function() {
+      // Her 5 saniyede zıpla
       bot.setControlState('jump', true)
       setTimeout(function() {
         bot.setControlState('jump', false)
       }, 500)
-    }, 30000)
+
+      // Rastgele yürü
+      const yonler = ['forward', 'back', 'left', 'right']
+      const rastgeleYon = yonler[Math.floor(Math.random() * yonler.length)]
+      bot.setControlState(rastgeleYon, true)
+      setTimeout(function() {
+        bot.setControlState(rastgeleYon, false)
+      }, 1000)
+
+    }, 5000)
   })
 
   bot.on('kicked', function(reason) {
@@ -39,9 +50,9 @@ function baslat() {
   })
 
   bot.on('end', function() {
-    console.log('Bağlantı kesildi, 60 sn sonra tekrar denenecek...')
+    console.log('60 sn sonra tekrar bağlanıyor...')
     if (hareketInterval) clearInterval(hareketInterval)
-    setTimeout(baslat, 60000)
+    setTimeout(baslat, 5000)
   })
 }
 
