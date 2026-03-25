@@ -44,3 +44,5 @@ function baslat() {
     setTimeout(baslat, 60000)
   })
 }
+
+baslat()
