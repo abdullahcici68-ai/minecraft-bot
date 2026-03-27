@@ -3,7 +3,7 @@ const mineflayer = require('mineflayer')
 
 const HOST = 'Cicibaba38.aternos.me'
 const PORT = 54194
-const USERNAME = 'AFKBot'
+const USERNAME = 'Ahmet_2648'
 const VERSION = '1.21.11'
 
 function baslat() {
@@ -52,7 +52,7 @@ function baslat() {
   bot.on('end', function() {
     console.log('60 sn sonra tekrar bağlanıyor...')
     if (hareketInterval) clearInterval(hareketInterval)
-    setTimeout(baslat, 5000)
+    setTimeout(baslat, 30000)
   })
 }
 
