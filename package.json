@@ -3,6 +3,7 @@
     "start": "node bot.js"
   },
   "dependencies": {
-    "mineflayer": "^4.35.0"
+    "mineflayer": "^4.35.0",
+    "node-aternos": "^1.0.0-beta"
   }
 }
