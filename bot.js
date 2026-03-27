@@ -1,30 +1,10 @@
 process.env.NODE_OPTIONS = '--max-old-space-size=256'
 const mineflayer = require('mineflayer')
-const aternos = require('node-aternos')
-
-const ATERNOS_USER = 'cicibaba12'
-const ATERNOS_PASS = 'Cicibaba38'
-const ATERNOS_SERVER = 'Cicibaba38'
 
 const HOST = 'Cicibaba38.aternos.me'
 const PORT = 54194
 const USERNAME = 'Ahmet_2648'
 const VERSION = '1.21.11'
-
-async function sunucuAc() {
-  try {
-    const client = aternos.createClient(ATERNOS_USER, ATERNOS_PASS)
-    const servers = await client.getServers()
-    const server = servers.find(s => s.address.includes(ATERNOS_SERVER))
-    if (server) {
-      await server.start()
-      console.log('Sunucu açılıyor, 60 sn bekleniyor...')
-      await new Promise(r => setTimeout(r, 60000))
-    }
-  } catch (e) {
-    console.log('Aternos hatası: ' + e.message)
-  }
-}
 
 function baslat() {
   const bot = mineflayer.createBot({
@@ -60,12 +40,11 @@ function baslat() {
     if (hareketInterval) clearInterval(hareketInterval)
   })
 
-  bot.on('end', async function() {
-    console.log('Bağlantı kesildi, sunucu açılıyor...')
+  bot.on('end', function() {
+    console.log('30 sn sonra tekrar bağlanıyor...')
     if (hareketInterval) clearInterval(hareketInterval)
-    await sunucuAc()
     setTimeout(baslat, 30000)
   })
 }
 
-sunucuAc().then(() => baslat())
+baslat()
