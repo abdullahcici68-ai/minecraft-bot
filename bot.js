@@ -6,7 +6,32 @@ const PORT = 54194
 const USERNAME = 'Ahmet_2648'
 const VERSION = '1.21.11'
 
-function baslat() {
+setInterval(function() {
+  const mesajlar = [
+    'gg',
+    'hey',
+    'kim var?',
+    'ne yapıyorsunuz?',
+    'bugün hava güzel',
+    'biri var mı?',
+    'eğlenceli bir gün',
+    'naber',
+    'hay aksi',
+    'vay be',
+    'iyi oyunlar',
+    'bu sunucu çok iyi',
+    'burda kimse yok mu',
+    'yalnız kaldım :(',
+    'herkese merhaba!',
+    'bugün ne oynuyoruz',
+  ]
+  const rastgele = mesajlar[Math.floor(Math.random() * mesajlar.length)]
+  bot.chat(rastgele)
+}, 600000)
+
+function baslat() 
+{
+
   const bot = mineflayer.createBot({
     host: HOST,
     port: PORT,
